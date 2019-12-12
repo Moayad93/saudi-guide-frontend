@@ -47,3 +47,14 @@ export const updateTrip = (id, trip) => {
     // }
   });
 };
+
+// Delete a Trip
+export const deleteTrip = id => {
+  return axios({
+    method: "DELETE",
+    url: `${apiUrl}/trips/${id}`
+    // headers: {
+    //   Authorization: `Bearer ${user.token}` // FOR EXPRESS
+    // }
+  });
+};
