@@ -22,3 +22,14 @@ export const createTrip = (trip) => {
     }
   });
 }
+
+// Show a Trip
+export const showTrip = (id) => {
+  return axios({
+    method: "GET",
+    url: `${apiUrl}/trips/${id}`
+    // headers: {
+    //   Authorization: `Bearer ${user.token}` // FOR EXPRESS
+    // }
+  });
+};
