@@ -13,7 +13,7 @@ export const allTrips = () => {
 };
 
 // Create a Trip
-export const createTrip = (trip) => {
+export const createTrip = trip => {
   return axios({
     method: "POST",
     url: `${apiUrl}/trips`,
@@ -21,13 +21,27 @@ export const createTrip = (trip) => {
       trip
     }
   });
-}
+};
 
 // Show a Trip
-export const showTrip = (id) => {
+export const showTrip = id => {
   return axios({
     method: "GET",
     url: `${apiUrl}/trips/${id}`
+    // headers: {
+    //   Authorization: `Bearer ${user.token}` // FOR EXPRESS
+    // }
+  });
+};
+
+// Update a Trip
+export const updateTrip = (id, trip) => {
+  return axios({
+    method: "PATCH",
+    url: `${apiUrl}/trips/${id}`,
+    data: {
+      trip
+    }
     // headers: {
     //   Authorization: `Bearer ${user.token}` // FOR EXPRESS
     // }
