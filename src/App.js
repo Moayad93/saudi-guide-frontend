@@ -17,11 +17,14 @@ class App extends Component {
 
     this.state = {
       user: null,
-      alerts: []
+      alerts: [],
+      trips: []
     };
   }
 
   setUser = user => this.setState({ user });
+
+  setTrips = trips => this.setState({ trips: trips });
 
   clearUser = () => this.setState({ user: null });
 
@@ -53,7 +56,7 @@ class App extends Component {
           />
           <Route
             path="/trips"
-            render={() => <AllTrips />}
+            render={() => <AllTrips trips={this.state.trips} setTrips={this.setTrips} />}
           />
           <AuthenticatedRoute
             user={user}
