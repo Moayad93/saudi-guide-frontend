@@ -10,6 +10,7 @@ import SignOut from "./auth/components/SignOut";
 import ChangePassword from "./auth/components/ChangePassword";
 import AlertDismissible from "./auth/components/AlertDismissible";
 
+import AllTrips from "./trips/components/AllTrips";
 class App extends Component {
   constructor() {
     super();
@@ -49,6 +50,10 @@ class App extends Component {
           <Route
             path="/sign-in"
             render={() => <SignIn alert={this.alert} setUser={this.setUser} />}
+          />
+          <Route
+            path="/trips"
+            render={() => <AllTrips />}
           />
           <AuthenticatedRoute
             user={user}
