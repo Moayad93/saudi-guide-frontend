@@ -10,17 +10,25 @@ import SignOut from "./auth/components/SignOut";
 import ChangePassword from "./auth/components/ChangePassword";
 import AlertDismissible from "./auth/components/AlertDismissible";
 
+import AllTrips from "./trips/components/AllTrips";
+import CreateTrip from "./trips/components/CreateTrip";
+import ShowTrip from "./trips/components/ShowTrip";
+import UpdateTrip from "./trips/components/UpdateTrip";
+import DeleteTrip from "./trips/components/DeleteTrip";
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
       user: null,
-      alerts: []
+      alerts: [],
+      trips: []
     };
   }
 
   setUser = user => this.setState({ user });
+
+  setTrips = trips => this.setState({ trips: trips });
 
   clearUser = () => this.setState({ user: null });
 
@@ -49,6 +57,26 @@ class App extends Component {
           <Route
             path="/sign-in"
             render={() => <SignIn alert={this.alert} setUser={this.setUser} />}
+          />
+          <Route
+            path="/trips"
+            render={() => <AllTrips trips={this.state.trips} setTrips={this.setTrips} />}
+          />
+          <Route
+            path="/create-trip"
+            render={() => <CreateTrip trips={this.state.trips} setTrips={this.setTrips} />}
+          />
+          <Route
+            path="/show-trip"
+            render={() => <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />}
+          />
+          <Route
+            path="/update-trip"
+            render={() => <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />}
+          />
+          <Route
+            path="/delete-trip"
+            render={() => <DeleteTrip trips={this.state.trips} setTrips={this.setTrips} />}
           />
           <AuthenticatedRoute
             user={user}
