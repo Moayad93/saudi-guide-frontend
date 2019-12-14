@@ -1,4 +1,6 @@
 import React from "react";
+import DeleteTrip from "./DeleteTrip";
+import UpdateTrip from "./UpdateTrip";
 
 const Trip = props => {
   return (
@@ -15,8 +17,16 @@ const Trip = props => {
           <p className="card-text">{props.guide}</p>
           <p className="card-text">{props.activities}</p>
           <p className="card-text">{props.recommendation}</p>
-          {/* <p class="card-text">{props.includedInTrip}</p> */}
-          {/* <p class="card-text">{props.whatToBring}</p> */}
+          <DeleteTrip
+            id={props.id}
+            trips={props.trips}
+            setTrips={props.setTrips}
+          />
+          <UpdateTrip
+            id={props.id}
+            trips={props.trips}
+            setTrips={props.setTrips}
+          />
         </div>
       </div>
     </React.Fragment>

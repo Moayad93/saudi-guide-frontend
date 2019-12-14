@@ -51,35 +51,53 @@ class App extends Component {
         ))}
         <main className="container">
           <Route
+            exact
             path="/sign-up"
             render={() => <SignUp alert={this.alert} setUser={this.setUser} />}
           />
           <Route
+            exact
             path="/sign-in"
             render={() => <SignIn alert={this.alert} setUser={this.setUser} />}
           />
           <Route
+            exact
             path="/trips"
-            render={() => <AllTrips trips={this.state.trips} setTrips={this.setTrips} />}
+            render={() => (
+              <AllTrips trips={this.state.trips} setTrips={this.setTrips} />
+            )}
           />
           <Route
+            exact
             path="/create-trip"
-            render={() => <CreateTrip trips={this.state.trips} setTrips={this.setTrips} />}
+            render={() => (
+              <CreateTrip trips={this.state.trips} setTrips={this.setTrips} />
+            )}
           />
           <Route
+            exact
             path="/show-trip"
-            render={() => <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />}
+            render={() => (
+              <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
+            )}
           />
           <Route
+            exact
             path="/update-trip"
-            render={() => <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />}
+            render={() => (
+              <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />
+            )}
           />
           <Route
+            exact
             path="/delete-trip"
-            render={() => <DeleteTrip trips={this.state.trips} setTrips={this.setTrips} />}
+            render={() => (
+              <DeleteTrip trips={this.state.trips} setTrips={this.setTrips} />
+            )}
           />
           <AuthenticatedRoute
             user={user}
+            exact
             path="/sign-out"
             render={() => (
               <SignOut
@@ -91,6 +109,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
+            exact
             path="/change-password"
             render={() => <ChangePassword alert={this.alert} user={user} />}
           />

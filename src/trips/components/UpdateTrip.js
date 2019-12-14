@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-
+import { withRouter, Link } from "react-router-dom";
 import { updateTrip } from "../api";
 
 class UpdateTrip extends Component {
   render() {
-
     return (
       <React.Fragment>
+        <Link to={"/trip-form/" + this.props.id} className="btn btn-primary">
+          Edit
+        </Link>
       </React.Fragment>
     );
   }
