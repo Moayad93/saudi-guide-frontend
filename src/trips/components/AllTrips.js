@@ -6,7 +6,6 @@ class AllTrips extends Component {
   componentDidMount() {
     allTrips()
       .then(res => {
-        console.log("trips xxxxxxxxx:", res.data.trips);
         this.props.setTrips(res.data.trips);
       })
       .catch(err => {
@@ -33,6 +32,7 @@ class AllTrips extends Component {
             whatToBring={trip.whatToBring}
             trips={this.props.trips}
             setTrips={this.props.setTrips}
+            user={this.props.user}
             key={index}
           />
         );
