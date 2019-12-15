@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 import AuthenticatedRoute from "./auth/components/AuthenticatedRoute";
 import Header from "./header/Header";
+import Footer from "./footer/Footer";
 import SignUp from "./auth/components/SignUp";
 import SignIn from "./auth/components/SignIn";
 import SignOut from "./auth/components/SignOut";
@@ -15,6 +16,7 @@ import CreateTrip from "./trips/components/CreateTrip";
 import ShowTrip from "./trips/components/ShowTrip";
 import UpdateTrip from "./trips/components/UpdateTrip";
 import DeleteTrip from "./trips/components/DeleteTrip";
+import TripForm from "./trips/components/TripForm";
 class App extends Component {
   constructor() {
     super();
@@ -39,83 +41,106 @@ class App extends Component {
   render() {
     const { alerts, user } = this.state;
 
-    console.log(user);
-
     return (
       <React.Fragment>
-        <Header user={user} />
-        {alerts.map((alert, index) => (
-          <AlertDismissible
-            key={index}
-            variant={alert.type}
-            message={alert.message}
-          />
-        ))}
-        <main className="container">
-          <Route
-            exact
-            path="/sign-up"
-            render={() => <SignUp alert={this.alert} setUser={this.setUser} />}
-          />
-          <Route
-            exact
-            path="/sign-in"
-            render={() => <SignIn alert={this.alert} setUser={this.setUser} />}
-          />
-          <Route
-            exact
-            path="/trips"
-            render={() => (
-              <AllTrips trips={this.state.trips} setTrips={this.setTrips} user={user} />
-            )}
-          />
-          <Route
-            exact
-            path="/create-trip"
-            render={() => (
-              <CreateTrip trips={this.state.trips} setTrips={this.setTrips} />
-            )}
-          />
-          <Route
-            exact
-            path="/show-trip"
-            render={() => (
-              <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
-            )}
-          />
-          <Route
-            exact
-            path="/update-trip"
-            render={() => (
-              <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />
-            )}
-          />
-          <Route
-            exact
-            path="/delete-trip"
-            render={() => (
-              <DeleteTrip trips={this.state.trips} setTrips={this.setTrips} />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact
-            path="/sign-out"
-            render={() => (
-              <SignOut
-                alert={this.alert}
-                clearUser={this.clearUser}
-                user={user}
-              />
-            )}
-          />
-          <AuthenticatedRoute
-            user={user}
-            exact
-            path="/change-password"
-            render={() => <ChangePassword alert={this.alert} user={user} />}
-          />
-        </main>
+        {/* WRAPPER */}
+        <div className="row bg-secondary">
+          {/* HEADER */}
+          <Header user={user} />
+
+          {alerts.map((alert, index) => (
+            <AlertDismissible
+              key={index}
+              variant={alert.type}
+              message={alert.message}
+            />
+          ))}
+
+          {/* MAIN */}
+          <main className="col-12 bg-light p-3">
+            <Route
+              exact
+              path="/sign-up"
+              render={() => (
+                <SignUp alert={this.alert} setUser={this.setUser} />
+              )}
+            />
+            <Route
+              exact
+              path="/sign-in"
+              render={() => (
+                <SignIn alert={this.alert} setUser={this.setUser} />
+              )}
+            />
+            <Route
+              exact
+              path="/trips"
+              render={() => (
+                <AllTrips
+                  trips={this.state.trips}
+                  setTrips={this.setTrips}
+                  user={user}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/create-trip"
+              render={() => (
+                <CreateTrip trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <Route
+              exact
+              path="/show-trip"
+              render={() => (
+                <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <Route
+              exact
+              path="/update-trip"
+              render={() => (
+                <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <Route
+              exact
+              path="/delete-trip"
+              render={() => (
+                <DeleteTrip trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <Route
+              exact
+              path="/trip-form/:id"
+              render={() => (
+                <TripForm trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <AuthenticatedRoute
+              user={user}
+              exact
+              path="/sign-out"
+              render={() => (
+                <SignOut
+                  alert={this.alert}
+                  clearUser={this.clearUser}
+                  user={user}
+                />
+              )}
+            />
+            <AuthenticatedRoute
+              user={user}
+              exact
+              path="/change-password"
+              render={() => <ChangePassword alert={this.alert} user={user} />}
+            />
+          </main>
+
+          {/* FOOTER */}
+          <Footer />
+        </div>
       </React.Fragment>
     );
   }
