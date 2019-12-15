@@ -10,27 +10,36 @@ class SignUp extends Component {
 
     this.state = {
       email: "",
-      firstName: "",
-      lastName: "",
       password: "",
       passwordConfirmation: "",
+      firstName: "",
+      lastName: "",
       role: ""
     };
   }
 
-  handleChange = event => {
-    console.log(event.target.value)
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  handleChange = event =>{
+    if(event.target.name === "formHorizontalRadios"){
+      this.setState({
+        role: event.target.value
+      });
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+
   }
 
   onSignUp = event => {
     event.preventDefault();
 
     const { alert, history, setUser } = this.props;
-
+    // console.log("=====");
+    
+    // console.log(this.state)
     signUp(this.state)
+    
       .then(() => signIn(this.state))
       .then(res => setUser(res.data.user))
       .then(() => alert(messages.signUpSuccess, "success"))
@@ -108,14 +117,14 @@ class SignUp extends Component {
           onChange={this.handleChange}
         />
         <Form.Group as={Row}>
-          <Form.Label as="role" column sm={2}>
+          <Form.Label as="legend" column sm={2}>
             Role
           </Form.Label>
           <Col sm={10}>
             <Form.Check
               type="radio"
               label="Tourist"
-              value={role}
+              value='Tourist'
               name="formHorizontalRadios"
               id="tourist"
               onChange={this.handleChange}
@@ -123,7 +132,7 @@ class SignUp extends Component {
             <Form.Check
               type="radio"
               label="Agent"
-              value={role}
+              value='Agent'
               name="formHorizontalRadios"
               id="agent"
               onChange={this.handleChange}
