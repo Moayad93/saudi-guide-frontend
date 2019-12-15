@@ -4,6 +4,8 @@ import { updateTrip } from "../api";
 
 class UpdateTrip extends Component {
   render() {
+    console.log();
+
     return (
       <React.Fragment>
         <Link to={"/trip-form/" + this.props.id} className="btn btn-primary">

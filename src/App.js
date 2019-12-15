@@ -39,6 +39,8 @@ class App extends Component {
   render() {
     const { alerts, user } = this.state;
 
+    console.log(user);
+
     return (
       <React.Fragment>
         <Header user={user} />
@@ -64,7 +66,7 @@ class App extends Component {
             exact
             path="/trips"
             render={() => (
-              <AllTrips trips={this.state.trips} setTrips={this.setTrips} />
+              <AllTrips trips={this.state.trips} setTrips={this.setTrips} user={user} />
             )}
           />
           <Route
