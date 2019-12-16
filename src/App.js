@@ -3,8 +3,10 @@ import "./App.scss";
 import { Route } from "react-router-dom";
 
 import AuthenticatedRoute from "./auth/components/AuthenticatedRoute";
+
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
+
 import SignUp from "./auth/components/SignUp";
 import SignIn from "./auth/components/SignIn";
 import SignOut from "./auth/components/SignOut";
@@ -17,6 +19,7 @@ import ShowTrip from "./trips/components/ShowTrip";
 import UpdateTrip from "./trips/components/UpdateTrip";
 import DeleteTrip from "./trips/components/DeleteTrip";
 import TripForm from "./trips/components/TripForm";
+
 class App extends Component {
   constructor() {
     super();
@@ -44,7 +47,8 @@ class App extends Component {
     return (
       <React.Fragment>
         {/* WRAPPER */}
-        <div className="row bg-secondary">
+
+        <div className="row bg-danger">
           {/* HEADER */}
           <Header user={user} />
 
@@ -57,7 +61,7 @@ class App extends Component {
           ))}
 
           {/* MAIN */}
-          <main className="col-12 bg-light p-3">
+          <main className="col-12 bg-secondary p-3">
             <Route
               exact
               path="/sign-up"
@@ -99,7 +103,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/update-trip"
+              path="/update-trip/:id"
               render={() => (
                 <UpdateTrip trips={this.state.trips} setTrips={this.setTrips} />
               )}
