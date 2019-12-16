@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { deleteTrip } from "../api";
+import "./DeleteTrip.scss"
 
 class DeleteTrip extends Component {
   deleteTripMethod = () => {
@@ -20,9 +21,9 @@ class DeleteTrip extends Component {
   render() {
     return (
       <React.Fragment>
-        <button className="btn btn-danger" onClick={this.deleteTripMethod}>
+        <Link className="btn btn-danger" to="#" onClick={this.deleteTripMethod}>
           Delete
-        </button>
+        </Link>
       </React.Fragment>
     );
   }
