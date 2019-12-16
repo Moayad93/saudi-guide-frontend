@@ -25,9 +25,9 @@ const Trip = props => {
           to={`/show-trip/${props.id}`}
           render={() => (
             <ShowTrip
-              id={props.id}
-              trips={props.trips}
-              setTrips={props.setTrips}
+              // id={props.id}
+              // trips={props.trips}
+              // setTrips={props.setTrips}
             />
           )}
           className="text-decoration-none remove-link-decoration"
