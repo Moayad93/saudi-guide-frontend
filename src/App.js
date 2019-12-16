@@ -92,7 +92,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/show-trip"
+              path="/show-trip/:id"
               render={() => (
                 <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
               )}
