@@ -12,7 +12,7 @@ const Trip = props => {
       return <p key={activity._id}> {activity.title}</p>;
     });
   }
-  console.log(props.trips);
+  console.log("ShowTrip", props.id);
   return (
     <React.Fragment>
       <center>
@@ -23,9 +23,9 @@ const Trip = props => {
           to={"/show-trip/" + props.id}
           render={() => (
             <ShowTrip
-              id={props.id}
-              trips={props.trips}
-              setTrips={props.setTrips}
+              // id={props.id}
+              // trips={props.trips}
+              // setTrips={props.setTrips}
             />
           )}
           className="text-decoration-none remove-link-decoration"
