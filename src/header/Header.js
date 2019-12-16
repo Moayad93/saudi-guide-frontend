@@ -28,7 +28,7 @@ const Header = ({ user }) => (
   <header className="col-12">
     <h1>Saudi Guide</h1>
     <nav>
-      {user && <span>Welcome, {user.email}</span>}
+{user && <span>Welcome, {user.firstName} {user.lastName} You are {user.role}</span>}
       {user ? authenticatedOptions : unauthenticatedOptions}
       {alwaysOptions}
     </nav>
