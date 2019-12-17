@@ -96,7 +96,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/show-trip"
+              path="/show-trip/:id"
               render={() => (
                 <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
               )}
@@ -118,6 +118,13 @@ class App extends Component {
             <Route
               exact
               path="/trip-form/:id"
+              render={() => (
+                <TripForm trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
+            <Route
+              exact
+              path="/trip-form"
               render={() => (
                 <TripForm trips={this.state.trips} setTrips={this.setTrips} />
               )}
