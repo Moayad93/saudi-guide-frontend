@@ -14,6 +14,7 @@ export const allTrips = () => {
 
 // Create a Trip
 export const createTrip = trip => {
+  console.log(trip);
   return axios({
     method: "POST",
     url: `${apiUrl}/trips`,
@@ -36,6 +37,8 @@ export const showTrip = id => {
 
 // Update a Trip
 export const updateTrip = (id, trip) => {
+  console.log("im in update trip call");
+  
   return axios({
     method: "PATCH",
     url: `${apiUrl}/trips/${id}`,
