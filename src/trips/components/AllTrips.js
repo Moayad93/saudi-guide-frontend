@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { allTrips } from "../api";
+import { allTrips} from "../api";
 import Trip from "./Trip";
+import { Link } from "react-router-dom";
+import TripForm from "./TripForm";
+import { Button } from "react-bootstrap";
+import CreateTrip from "./CreateTrip"
 
 class AllTrips extends Component {
   componentDidMount() {
@@ -20,7 +24,7 @@ class AllTrips extends Component {
       allTrips = this.props.trips.map((trip, index) => {
         return (
           <Trip
-            id = {trip._id}
+            id={trip._id}
             title={trip.title}
             description={trip.description}
             startDate={trip.startDate}
@@ -38,7 +42,12 @@ class AllTrips extends Component {
         );
       });
     }
-    return allTrips;
+    return (
+      <React.Fragment>
+        <CreateTrip />
+        {allTrips}
+      </React.Fragment>
+    )
   }
 }
 
