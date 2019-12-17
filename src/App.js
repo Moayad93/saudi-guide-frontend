@@ -126,7 +126,7 @@ class App extends Component {
               exact
               path="/trip-form"
               render={() => (
-                <TripForm trips={this.state.trips} setTrips={this.setTrips} />
+                <TripForm trips={this.state.trips} setTrips={this.setTrips} user={user} />
               )}
             />
             <AuthenticatedRoute
