@@ -1,3 +1,18 @@
+$cantaloupe : #c7f282;
+$silver : #f1e681;
+$success : #f08181;
+$charcoal: #ccc;
+
+// .btn, .btn-primary, .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+//   background-color: $charcoal !important;
+// }
+
+.card, .btn, .form-control { border-radius: 0; }
+
+html {
+  font-size: calc(0.75rem + 0.25vw);
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -7,3 +22,11 @@ body {
 .alert {
   margin: 30px;
 }
+
+.bg-dark {
+  background-color: #e07979 !important;
+}
+
+// main {
+//   min-height:100vh;
+// }
