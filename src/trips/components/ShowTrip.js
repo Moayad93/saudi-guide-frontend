@@ -28,12 +28,15 @@ class ShowTrip extends Component {
     }
 
     render() {
+        const activities = this.state.trip.activities.map(activity => {
+            return <p>activity.title</p>
+        });
         console.log(this.state.trip.activities);
         return (
             <React.Fragment>
                 <h1>{this.state.trip.title} </h1>
                 <h2>{this.state.trip.description}</h2>
-                <p>{this.state.trip.activities}</p>
+                {activities}
             </React.Fragment>
         )
     }
