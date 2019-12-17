@@ -19,6 +19,8 @@ import ShowTrip from "./trips/components/ShowTrip";
 import UpdateTrip from "./trips/components/UpdateTrip";
 import DeleteTrip from "./trips/components/DeleteTrip";
 import TripForm from "./trips/components/TripForm";
+import CreateActivity from "./activities/components/CreateActivity";
+import CreateForm from "./activities/components/CreateForm";
 
 class App extends Component {
   constructor() {
@@ -129,6 +131,13 @@ class App extends Component {
                 <TripForm trips={this.state.trips} setTrips={this.setTrips} user={user} />
               )}
             />
+            <Route
+            exact
+            path="/show-trip/:id/activity-form"
+            render={() => (
+              <CreateForm trips={this.state.trips} setTrips={this.setTrips} user={user} />
+            )} />
+            
             <AuthenticatedRoute
               user={user}
               exact
