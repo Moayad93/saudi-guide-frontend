@@ -122,6 +122,13 @@ class App extends Component {
                 <TripForm trips={this.state.trips} setTrips={this.setTrips} />
               )}
             />
+            <Route
+              exact
+              path="/trip-form"
+              render={() => (
+                <TripForm trips={this.state.trips} setTrips={this.setTrips} />
+              )}
+            />
             <AuthenticatedRoute
               user={user}
               exact
