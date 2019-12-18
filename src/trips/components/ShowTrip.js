@@ -1,13 +1,30 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { showTrip } from "../api";
+import CreateActivity from "../../activities/components/CreateActivity";
 
 class ShowTrip extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            trip: {}
+            trip: {
+                title: "",
+                description: "",
+                activities: [],
+                includedInTrip: [{
+
+                }],
+                whatToBring: [{
+
+                }],
+                startDate: "",
+                endDate: "",
+                recommendation: "",
+                guide: "", // add your user id in this feild. this is my user
+                city: "",
+                address: "",
+            }
         }
     }
 
@@ -28,15 +45,26 @@ class ShowTrip extends Component {
     }
 
     render() {
-        const activities = this.state.trip.activities.map(activity => {
-            return <p>activity.title</p>
-        });
-        console.log(this.state.trip.activities);
+        let allActivities = <h2> No Activity </h2>
+        if (this.state.trip.activities.length > 0) {
+            allActivities = this.state.trip.activities.map(activity => {
+                return (<li key={activity._id}>{activity.title}</li>)
+            });
+        }
+        console.log(this.state.trip);
+        //====  this is a werid way to find your state.. Need to be discussed tmr with you guys
+        // console.log(allActivities._self.state.trip.activities); 
+
         return (
             <React.Fragment>
-                <h1>{this.state.trip.title} </h1>
-                <h2>{this.state.trip.description}</h2>
-                {activities}
+                <h1> title : {this.state.trip.title} </h1>
+                <h2> Description: {this.state.trip.description}</h2>
+                <h4>start Date: {this.state.trip.startDate}</h4>
+                <h4>end Date: {this.state.trip.endDate}</h4>
+                <ul>
+                    {allActivities}
+                </ul>
+                <CreateActivity id={this.props.match.params.id} />
             </React.Fragment>
         )
     }

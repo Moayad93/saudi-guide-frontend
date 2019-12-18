@@ -10,15 +10,20 @@ class TripForm extends Component {
         title: "",
         description: "",
         activities: [],
-        includedInTrip: [],
-        whatToBring: [],
+        includedInTrip: [{
+          name: "this",
+          image: "hey"
+        }],
+        whatToBring: [{
+          name: "this",
+          image: "hey"
+        }],
         startDate: "",
         endDate: "",
-        recommendation: [],
-        location: "",
-        guide: ""
-        // city: "",
-        // address: "",
+        recommendation: "",
+        guide: "5df2104cbdf294053906899b", // add your user id in this feild. this is my user
+        city: "",
+        address: "",
       }
     };
   }
@@ -29,9 +34,9 @@ class TripForm extends Component {
     console.log(data);
     console.log("==========");
 
-    createTrip({ trip: data })
-      .then(res => {
-        this.props.history.push("/");
+    createTrip(data)
+      .then((res) => {
+        this.props.history.push("/trips")
         // this.setState({ ...this.state, trip: res.data })
         this.props.setTrips([...this.props.trips, data]);
       })
@@ -48,7 +53,7 @@ class TripForm extends Component {
     console.log("I am in updateTripMethod");
     updateTrip(this.props.match.params.id, data)
       .then(res => {
-        this.props.history.push(`/trips/${this.props.match.params.id}`);
+        this.props.history.push(`/show-trip/${this.props.match.params.id}`);
         console.log("=======");
         console.log("res", res);
         console.log("=======");
@@ -62,29 +67,24 @@ class TripForm extends Component {
   componentDidMount() {
     if (this.props.match.params.id) {
       showTrip(this.props.match.params.id)
-        .then(res => {
-          let x = new Date();
-          console.log("(___________________res\n", res);
-          console.log("(___________________res.data\n", res.data);
-          console.log(
-            "(___________________res.data.trip.date\n",
-            new Date(res.data.trip.startDate).getDay()
-          );
-          console.log(
-            "(___________________res.data.trip.date\n",
-            new Date(res.data.trip.startDate).getMonth()
-          );
-          console.log(
-            "(___________________res.data.trip.date\n",
-            new Date(res.data.trip.startDate).getFullYear()
-          );
-          this.setState({ ...this.state, trip: res.data.trip });
-        })
-        .catch(err => {
+        .then((res) => {
+          // let x = new Date()
+          // console.log("(___________________res\n", res);
+          // console.log("(___________________res.data\n", res.data);
+          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getDay());
+          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getMonth());
+          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getFullYear());
+          this.setState({ ...this.state, trip: res.data.trip })
+        }).catch((err) => {
           console.log(err);
         });
     }
-    console.log(this.state);
+    // console.log(this.state);
+
+    console.log("=========");
+    console.log(this.state.trip.guide);
+    console.log("=========");
+    
   }
 
   handleChange = e => {
@@ -194,14 +194,9 @@ class TripForm extends Component {
   onSubmitCreateMethod = e => {
     e.preventDefault();
 
-    const data = {
-      trip: this.state.trip
-    };
+    this.createTripMethod(this.state.trip)
+  }
 
-    this.createTripMethod(data.trip);
-  };
-
-  // onSubmit={this.onSubmitUpdateMethod}
   render() {
     console.log(this.state);
     
@@ -330,9 +325,8 @@ class TripForm extends Component {
               <div className="invalid-feedback">Please choose a username.</div>
             </div>
           </div>
-
           <div className="form-row">
-            {/* <div className="col-md-6 mb-3">
+            <div className="col-md-6 mb-3">
               <label for="validationCustom03">City</label>
               <input
                 type="text"
@@ -345,7 +339,9 @@ class TripForm extends Component {
                 required
               />
               <div className="invalid-feedback">Please provide a valid city.</div>
-            </div> */}
+            </div>
+          </div>
+          <div className="form-row">
             <div className="col-md-3 mb-3">
               <label for="validationCustom04">Recommendation</label>
               <input
@@ -393,7 +389,7 @@ class TripForm extends Component {
               </div>
             </div>
           </div>
-          {/* <div className="col-md-3 mb-3">
+          <div className="col-md-3 mb-3">
             <label for="validationCustom05">Address</label>
             <input
               type="text"
@@ -406,12 +402,8 @@ class TripForm extends Component {
               required
             />
             <div className="invalid-feedback">Please provide a valid address.</div>
-          </div> */}
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={this.onSubmitUpdateMethod}
-          >
+          </div>
+          <button className="btn btn-primary" type="submit" onClick={this.onSubmitUpdateMethod}>
             update form
           </button>
 
