@@ -16,7 +16,7 @@ class AlertDismissible extends React.Component {
         <Alert
           key={this.props.index}
           dismissible
-          variant={this.props.variant}
+          // variant={this.props.variant}
           onClose={handleDismiss}
         >
           <Alert.Heading>{this.props.message}</Alert.Heading>

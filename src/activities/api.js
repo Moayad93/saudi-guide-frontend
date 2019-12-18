@@ -14,3 +14,10 @@ export const createActivity = (id, activity) => {
     });
 };
 
+export const deleteActivity = (tripId, activityId) => {
+    return axios({
+        method: "DELETE",
+        url: `${apiUrl}/trips/${tripId}/activities/${activityId}`
+    })
+};
+

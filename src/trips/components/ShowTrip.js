@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { showTrip } from "../api";
 import CreateActivity from "../../activities/components/CreateActivity";
+import DeleteActivity from "../../activities/components/DeleteActivity";
 
 class ShowTrip extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class ShowTrip extends Component {
             trip: {
                 title: "",
                 description: "",
+                image:"",
                 activities: [],
                 includedInTrip: [{
 
@@ -28,7 +30,7 @@ class ShowTrip extends Component {
         }
     }
 
-    showTripMethod() {
+    showTripMethod = () => {
         console.log("I am in");
         showTrip(this.props.match.params.id)
             .then((res) => {
@@ -45,11 +47,22 @@ class ShowTrip extends Component {
     }
 
     render() {
-        let allActivities = <h2> No Activity </h2>
+        console.log("=============");
+        console.log(this.props.trips);
+        
+        let allActivities;
         if (this.state.trip.activities.length > 0) {
-            allActivities = this.state.trip.activities.map(activity => {
-                return (<li key={activity._id}>{activity.title}</li>)
+            allActivities = this.state.trip.activities.map((activity, index) => {
+                return (
+                    <div key={index}>
+                    <li >{activity.title}</li>
+                        <DeleteActivity showTripMethod={this.showTripMethod} id={activity._id} setTrips= {this.props.setTrips}/>
+                    </div>
+                )
+
             });
+        }else {
+            allActivities = <h2> No Activity </h2>
         }
         console.log(this.state.trip);
         //====  this is a werid way to find your state.. Need to be discussed tmr with you guys
@@ -62,6 +75,7 @@ class ShowTrip extends Component {
                 <h2> city: {this.state.trip.city}</h2>
                 <h4>start Date: {this.state.trip.startDate}</h4>
                 <h4>end Date: {this.state.trip.endDate}</h4>
+                <img src={this.state.trip.image} alt="ffff" />
                 <ul>
                     {allActivities}
                 </ul>

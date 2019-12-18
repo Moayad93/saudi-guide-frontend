@@ -18,6 +18,7 @@ class AllTrips extends Component {
   }
 
   render() {
+    console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", this.props.user);
     let allTrips = <h2>No Trips</h2>;
 
     if (this.props.trips.length > 0) {
@@ -27,6 +28,7 @@ class AllTrips extends Component {
             id={trip._id}
             title={trip.title}
             description={trip.description}
+            image={trip.image}
             startDate={trip.startDate}
             endDate={trip.endDate}
             guide={trip.guide}

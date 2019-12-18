@@ -21,7 +21,7 @@ class DeleteTrip extends Component {
   render() {
     return (
       <React.Fragment>
-        <Link className="btn btn-danger" to="#" onClick={this.deleteTripMethod}>
+        <Link className="btn btn-red" to="#" onClick={this.deleteTripMethod}>
           Delete
         </Link>
       </React.Fragment>
