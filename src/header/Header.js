@@ -40,7 +40,7 @@ const Header = ({ user }) => (
   // <header className="col-12 bg-dark">
   //   <h1>Saudi Guide</h1>
   // </header>
-  <nav className="col-12 navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav className="col-12 navbar navbar-expand-sm navbar-dark bg-cantaloupe">
     <Link to="/trips" className="navbar-brand">
       Saudi Guide
     </Link>
@@ -59,7 +59,6 @@ const Header = ({ user }) => (
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         {alwaysOptions}
-        {/* {user ? authenticatedOptions : unauthenticatedOptions} */}
         <li className="nav-item dropdown">
           <span
             className="nav-link dropdown-toggle"
@@ -77,7 +76,7 @@ const Header = ({ user }) => (
           </div>
         </li>
       </ul>
-      {user && <span className="my-2 my-lg-0">Welcome, {user.email}</span>}
+      {user && <span className="my-2 my-lg-0">Welcome, {user.firstName}</span>}
     </div>
   </nav>
 );

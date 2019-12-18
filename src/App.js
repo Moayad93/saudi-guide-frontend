@@ -43,25 +43,24 @@ class App extends Component {
 
   render() {
     const { alerts, user } = this.state;
-
+console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", user);
     return (
       <React.Fragment>
         {/* WRAPPER */}
-
-        <div className="row bg-danger">
+        <div className="row transparent-div">
           {/* HEADER */}
           <Header user={user} />
 
-          {alerts.map((alert, index) => (
-            <AlertDismissible
-              key={index}
-              variant={alert.type}
-              message={alert.message}
-            />
-          ))}
-
           {/* MAIN */}
-          <main className="col-12 bg-secondary p-3">
+          {/* bg-grey FOR UX DESIGN */}
+          <main className="col-12 bg-transparent push-footer p-3">
+            {alerts.map((alert, index) => (
+              <AlertDismissible
+                key={index}
+                variant={alert.type}
+                message={alert.message}
+              />
+            ))}
             <Route
               exact
               path="/sign-up"

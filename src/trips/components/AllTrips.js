@@ -18,6 +18,7 @@ class AllTrips extends Component {
   }
 
   render() {
+    console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", this.props.user);
     let allTrips = <h2>No Trips</h2>;
 
     if (this.props.trips.length > 0) {

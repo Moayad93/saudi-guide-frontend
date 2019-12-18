@@ -8,7 +8,7 @@ class CreateTrip extends Component {
         <Link
           to={`/trip-form`}
           render={() => <TripForm />}
-          className="btn btn-primary"
+          className="btn btn-green"
         >
           Create new Trip
         </Link>
