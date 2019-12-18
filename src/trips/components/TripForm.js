@@ -10,20 +10,24 @@ class TripForm extends Component {
         title: "",
         description: "",
         activities: [],
-        includedInTrip: [{
-          name: "this",
-          image: "hey"
-        }],
-        whatToBring: [{
-          name: "this",
-          image: "hey"
-        }],
+        includedInTrip: [
+          {
+            name: "this",
+            image: "hey"
+          }
+        ],
+        whatToBring: [
+          {
+            name: "this",
+            image: "hey"
+          }
+        ],
         startDate: "",
         endDate: "",
         recommendation: "",
         guide: "5df2104cbdf294053906899b", // add your user id in this feild. this is my user
         city: "",
-        address: "",
+        address: ""
       }
     };
   }
@@ -35,8 +39,8 @@ class TripForm extends Component {
     console.log("==========");
 
     createTrip(data)
-      .then((res) => {
-        this.props.history.push("/trips")
+      .then(res => {
+        this.props.history.push("/trips");
         // this.setState({ ...this.state, trip: res.data })
         this.props.setTrips([...this.props.trips, data]);
       })
@@ -67,15 +71,16 @@ class TripForm extends Component {
   componentDidMount() {
     if (this.props.match.params.id) {
       showTrip(this.props.match.params.id)
-        .then((res) => {
+        .then(res => {
           // let x = new Date()
           // console.log("(___________________res\n", res);
           // console.log("(___________________res.data\n", res.data);
           // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getDay());
           // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getMonth());
           // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getFullYear());
-          this.setState({ ...this.state, trip: res.data.trip })
-        }).catch((err) => {
+          this.setState({ ...this.state, trip: res.data.trip });
+        })
+        .catch(err => {
           console.log(err);
         });
     }
@@ -84,7 +89,6 @@ class TripForm extends Component {
     console.log("=========");
     console.log(this.state.trip.guide);
     console.log("=========");
-    
   }
 
   handleChange = e => {
@@ -106,7 +110,7 @@ class TripForm extends Component {
       [e.target.name]: [...attr, value]
     });
     // console.log(this.state);
-    
+
     // let cc = [...this.state.trip.whatToBring]
     // if (e.target.name === "whatToBring") {
     //   if (cc.indexOf(e.target.value) == -1) {
@@ -118,7 +122,7 @@ class TripForm extends Component {
     //          vv.trip.whatToBring = cc;
     //          this.setState({trip: vv})
     //          console.log(this.state);
-             
+
     //         }
     //         else {
     //           // this.state.trip.whatToBring.slice(e.target.name.indexOf(e.target.value), 1)
@@ -142,44 +146,43 @@ class TripForm extends Component {
     //     console.log("Included In Trip", this.state.trip.includedInTrip);
     //   }
     // }
-      for (let i = 0; i <= this.state.trip[e.target.name].length; i++) {
-        if (this.state.trip[e.target.name].indexOf(e.target.value) > -1) {
-          // console.log("++++++++");
-          const newTrip = this.state.trip;
-          let newArr = this.state.trip[e.target.name];
-          newArr.slice( newArr.indexOf(e.target.value) , 1)
-          newTrip[e.target.name] = newArr
-          this.setState({trip: newTrip})
-          
-          // if (e.target.checked){
-          //   const newTrip = this.state.trip;
-          //  let newArr = this.state.trip[e.target.name];
-          //  newArr.push(e.target.value)
-          //  newTrip[e.target.name] = newArr
-          //  this.setState({trip: newTrip})
-           
-            
-          //  console.log("-------");
-            // e.target.name.push(e.target.value)
-          // }
-          // else {
-            
-          //   // e.target.name.slice(e.target.name.indexOf(e.target.value), 1)
-          //   console.log("========");
-            
-          // }
-        }else{  
-            // console.log("out ELSE");
-            
-            const newTrip = this.state.trip;
-            let newArr = this.state.trip[e.target.name];
-            newArr.push(e.target.value)
-            newTrip[e.target.name] = newArr
-            this.setState({trip: newTrip})
-        }
+    for (let i = 0; i <= this.state.trip[e.target.name].length; i++) {
+      if (this.state.trip[e.target.name].indexOf(e.target.value) > -1) {
+        // console.log("++++++++");
+        const newTrip = this.state.trip;
+        let newArr = this.state.trip[e.target.name];
+        newArr.slice(newArr.indexOf(e.target.value), 1);
+        newTrip[e.target.name] = newArr;
+        this.setState({ trip: newTrip });
+
+        // if (e.target.checked){
+        //   const newTrip = this.state.trip;
+        //  let newArr = this.state.trip[e.target.name];
+        //  newArr.push(e.target.value)
+        //  newTrip[e.target.name] = newArr
+        //  this.setState({trip: newTrip})
+
+        //  console.log("-------");
+        // e.target.name.push(e.target.value)
+        // }
+        // else {
+
+        //   // e.target.name.slice(e.target.name.indexOf(e.target.value), 1)
+        //   console.log("========");
+
+        // }
+      } else {
+        // console.log("out ELSE");
+
+        const newTrip = this.state.trip;
+        let newArr = this.state.trip[e.target.name];
+        newArr.push(e.target.value);
+        newTrip[e.target.name] = newArr;
+        this.setState({ trip: newTrip });
       }
-      console.log("setState: ", this.state.trip);
-      console.log(this.state.trip);
+    }
+    console.log("setState: ", this.state.trip);
+    console.log(this.state.trip);
   };
 
   onSubmitUpdateMethod = e => {
@@ -194,12 +197,12 @@ class TripForm extends Component {
   onSubmitCreateMethod = e => {
     e.preventDefault();
 
-    this.createTripMethod(this.state.trip)
-  }
+    this.createTripMethod(this.state.trip);
+  };
 
   render() {
     console.log(this.state);
-    
+
     return (
       <React.Fragment>
         <form className="needs-validation" novalidate>
@@ -334,11 +337,13 @@ class TripForm extends Component {
                 id="validationCustom03"
                 placeholder="City"
                 name="city"
-                value={this.state.city}
+                value={this.state.trip.city}
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">Please provide a valid city.</div>
+              <div className="invalid-feedback">
+                Please provide a valid city.
+              </div>
             </div>
           </div>
           <div className="form-row">
@@ -359,7 +364,7 @@ class TripForm extends Component {
               </div>
             </div>
             <div className="col-md-3 mb-3">
-              <label for="validationCustom05">start Date</label>
+              <label for="validationCustom05">Start Date</label>
               <input
                 type="Date"
                 className="form-control"
@@ -401,9 +406,15 @@ class TripForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <div className="invalid-feedback">Please provide a valid address.</div>
+            <div className="invalid-feedback">
+              Please provide a valid address.
+            </div>
           </div>
-          <button className="btn btn-primary" type="submit" onClick={this.onSubmitUpdateMethod}>
+          <button
+            className="btn btn-primary"
+            type="submit"
+            onClick={this.onSubmitUpdateMethod}
+          >
             update form
           </button>
 
