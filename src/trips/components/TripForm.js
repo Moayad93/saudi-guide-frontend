@@ -21,7 +21,7 @@ class TripForm extends Component {
         startDate: "",
         endDate: "",
         recommendation: "",
-        guide: "5df2104cbdf294053906899b", // add your user id in this feild.
+        guide: "5df2104cbdf294053906899b", // add your user id in this feild. this is my user
         city: "",
         address: "",
       }
