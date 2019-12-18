@@ -374,7 +374,7 @@ class TripForm extends Component {
 
           {this.props.match.params.id ? (
             <button
-              className="btn btn-primary"
+              className="btn btn-green"
               type="submit"
               onClick={this.onSubmitUpdateMethod}
             >
@@ -382,7 +382,7 @@ class TripForm extends Component {
             </button>
           ) : (
             <button
-              className="btn btn-primary"
+              className="btn btn-green"
               type="submit"
               onClick={this.onSubmitCreateMethod}
             >
