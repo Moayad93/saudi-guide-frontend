@@ -11,14 +11,18 @@ class TripForm extends Component {
         description: "",
         image: "",
         activities: [],
-        includedInTrip: [{
-          name: "",
-          image: ""
-        }],
-        whatToBring: [{
-          name: "",
-          image: ""
-        }],
+        includedInTrip: [
+          {
+            name: "",
+            image: ""
+          }
+        ],
+        whatToBring: [
+          {
+            name: "",
+            image: ""
+          }
+        ],
         startDate: "",
         endDate: "",
         recommendation: "",
@@ -57,7 +61,7 @@ class TripForm extends Component {
         console.log("=======");
         console.log("res", res);
         console.log("=======");
-        this.setState({ ...this.state, trip: res.data })
+        this.setState({ ...this.state, trip: res.data });
         this.props.history.push(`/show-trip/${this.props.match.params.id}`);
       })
       .catch(err => {
@@ -66,11 +70,10 @@ class TripForm extends Component {
   };
 
   componentDidMount() {
-
     if (this.props.match.params.id) {
       showTrip(this.props.match.params.id)
-        .then((res) => {
-          this.setState({ ...this.state, trip: res.data.trip })
+        .then(res => {
+          this.setState({ ...this.state, trip: res.data.trip });
           // let startDateUpdated = this.state.trip.startDate.split(this.state.trip.startDate.charAt(10))[0];
           // console.log(startDateUpdated);
 
@@ -81,8 +84,8 @@ class TripForm extends Component {
           //     trip: state
           //   });
           console.log(this.state);
-
-        }).catch((err) => {
+        })
+        .catch(err => {
           console.log(err);
         });
     }
@@ -105,13 +108,13 @@ class TripForm extends Component {
 
     // newTrip[e.target.name] = [...newTrip[e.target.name], {name: e.target.value , image: "NA"}];
 
-    const index = newTrip[e.target.name].findIndex((item) => {
+    const index = newTrip[e.target.name].findIndex(item => {
       return item.name === e.target.value;
     });
     if (index == -1) {
       newTrip[e.target.name].push({ name: e.target.value, image: "NA" });
     } else {
-      newTrip[e.target.name].splice(index, 1)
+      newTrip[e.target.name].splice(index, 1);
     }
     this.setState({
       trip: newTrip
@@ -122,31 +125,53 @@ class TripForm extends Component {
 
   onSubmitUpdateMethod = e => {
     e.preventDefault();
-
+    if (
+      new Date(this.state.trip.startDate).getFullYear() <=
+      new Date(this.state.trip.endDate).getFullYear()
+    ) {
+      if (
+        new Date(this.state.trip.startDate).getMonth() <=
+        new Date(this.state.trip.endDate).getMonth()
+      ) {
+      }
+      if (
+        new Date(this.state.trip.startDate).getDay() <=
+        new Date(this.state.trip.endDate).getDay()
+      ) {
+        this.updateTripMethod(data.trip);
+      }
+    } else {
+      alert("(End Date) is Invalid");
+    }
     const data = {
       trip: this.state.trip
     };
-    this.updateTripMethod(data.trip);
   };
 
   onSubmitCreateMethod = e => {
     e.preventDefault();
     if (
       new Date(this.state.trip.startDate).getFullYear() <=
-        new Date(this.state.trip.endDate).getFullYear() &&
-      new Date(this.state.trip.startDate).getMonth() <=
-        new Date(this.state.trip.endDate).getMonth() &&
-      new Date(this.state.trip.startDate).getDay() <=
-        new Date(this.state.trip.endDate).getDay()
+      new Date(this.state.trip.endDate).getFullYear()
     ) {
-      this.createTripMethod(this.state.trip);
+      if (
+        new Date(this.state.trip.startDate).getMonth() <=
+        new Date(this.state.trip.endDate).getMonth()
+      ) {
+      }
+      if (
+        new Date(this.state.trip.startDate).getDay() <=
+        new Date(this.state.trip.endDate).getDay()
+      ) {
+        this.createTripMethod(this.state.trip);
+      }
     } else {
       alert("(End Date) is Invalid");
     }
   };
 
   render() {
-    console.log(this.state.trip)
+    console.log(this.state.trip);
 
     console.log("this is Start Date: ", this.state.trip.startDate);
     console.log("this is end Date: ", this.state.trip.endDate);
@@ -320,9 +345,6 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid state.
-              </div>
             </div>
             <div className="col-md-3 mb-3">
               <label for="validationCustom05">Start Date</label>
@@ -335,9 +357,6 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid start Date.
-              </div>
             </div>
             <div className="col-md-3 mb-3">
               <label for="validationCustom05">End Date</label>
@@ -350,22 +369,26 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid End Date.
-              </div>
             </div>
           </div>
-          <button className="btn btn-primary" type="submit" onClick={this.onSubmitUpdateMethod}>
-            update form
-          </button>
 
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={this.onSubmitCreateMethod}
-          >
-            Submit form
-          </button>
+          {this.props.match.params.id ? (
+            <button
+              className="btn btn-green"
+              type="submit"
+              onClick={this.onSubmitUpdateMethod}
+            >
+              Update
+            </button>
+          ) : (
+            <button
+              className="btn btn-green"
+              type="submit"
+              onClick={this.onSubmitCreateMethod}
+            >
+              Create
+            </button>
+          )}
         </form>
       </React.Fragment>
     );
