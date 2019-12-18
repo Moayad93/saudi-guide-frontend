@@ -122,28 +122,50 @@ class TripForm extends Component {
 
   onSubmitUpdateMethod = e => {
     e.preventDefault();
+    if (new Date(this.state.trip.startDate).getFullYear() <= new Date(this.state.trip.endDate).getFullYear()){
 
+      if(
+       new Date(this.state.trip.startDate).getMonth() <=
+       new Date(this.state.trip.endDate).getMonth() 
+       ){
+
+       }if(
+         
+         new Date(this.state.trip.startDate).getDay() <=
+         new Date(this.state.trip.endDate).getDay()
+       )
+  {
+    this.updateTripMethod(data.trip);
+ }
+} else {
+   alert("(End Date) is Invalid");
+ }
     const data = {
       trip: this.state.trip
     };
-    this.updateTripMethod(data.trip);
   };
 
   onSubmitCreateMethod = e => {
     e.preventDefault();
-    if (
-      new Date(this.state.trip.startDate).getFullYear() <=
-        new Date(this.state.trip.endDate).getFullYear() &&
-      new Date(this.state.trip.startDate).getMonth() <=
-        new Date(this.state.trip.endDate).getMonth() &&
-      new Date(this.state.trip.startDate).getDay() <=
-        new Date(this.state.trip.endDate).getDay()
-    ) {
+    if (new Date(this.state.trip.startDate).getFullYear() <= new Date(this.state.trip.endDate).getFullYear()){
+
+         if(
+          new Date(this.state.trip.startDate).getMonth() <=
+          new Date(this.state.trip.endDate).getMonth() 
+          ){
+
+          }if(
+            
+            new Date(this.state.trip.startDate).getDay() <=
+            new Date(this.state.trip.endDate).getDay()
+          )
+     {
       this.createTripMethod(this.state.trip);
-    } else {
+    }
+  } else {
       alert("(End Date) is Invalid");
     }
-  };
+  }
 
   render() {
     console.log(this.state.trip)
