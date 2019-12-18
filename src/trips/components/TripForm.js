@@ -15,9 +15,9 @@ class TripForm extends Component {
           image: "hey"
         }],
         whatToBring: [{
-          name: "this",
-          image: "hey"
-        }],
+            name: "this",
+            image: "hey"
+          }],
         startDate: "",
         endDate: "",
         recommendation: "",
@@ -65,26 +65,23 @@ class TripForm extends Component {
   };
 
   componentDidMount() {
+    let start = this.state.trip.startDate.split(this.state.trip.startDate.charAt(10))[0];
+    let end = this.state.trip.endDate.split(this.state.trip.endDate.charAt(10))[0];
+
     if (this.props.match.params.id) {
       showTrip(this.props.match.params.id)
         .then((res) => {
-          // let x = new Date()
-          // console.log("(___________________res\n", res);
-          // console.log("(___________________res.data\n", res.data);
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getDay());
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getMonth());
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getFullYear());
           this.setState({ ...this.state, trip: res.data.trip })
         }).catch((err) => {
           console.log(err);
         });
     }
-    // console.log(this.state);
 
     console.log("=========");
     console.log(this.state.trip.guide);
     console.log("=========");
-    
+
+
   }
 
   handleChange = (e) => {
@@ -127,6 +124,8 @@ class TripForm extends Component {
   }
 
   render() {
+    console.log(this.state.trip.startDate);
+
     return (
       <React.Fragment>
         <form className="needs-validation" novalidate >
@@ -215,7 +214,7 @@ class TripForm extends Component {
                 id="validationCustom03"
                 placeholder="City"
                 name="city"
-                value={this.state.city}
+                value={this.state.trip.city}
                 onChange={this.handleChange}
                 required
               />

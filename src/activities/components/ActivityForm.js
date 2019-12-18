@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createActivity } from '../api';
 import { Link, withRouter } from 'react-router-dom';
-class CreateForm extends Component {
+class ActivityForm extends Component {
     constructor(props) {
         super(props)
 
@@ -107,4 +107,4 @@ class CreateForm extends Component {
         )
     }
 }
-export default withRouter(CreateForm);
+export default withRouter(ActivityForm);
