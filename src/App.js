@@ -57,7 +57,6 @@ console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", user);
           <Header user={user} />
 
           {/* MAIN */}
-          {/* bg-grey FOR UX DESIGN */}
           <main className="col-12 bg-transparent push-footer p-3">
             {alerts.map((alert, index) => (
               <AlertDismissible

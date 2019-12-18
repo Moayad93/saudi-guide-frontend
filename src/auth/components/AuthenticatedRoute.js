@@ -21,7 +21,7 @@ const AuthenticatedRoute = ({
       <Route
         {...rest}
         render={props =>
-          user ? <Component {...props} /> : <Redirect to="/" />
+          user ? <Component {...props} /> : <Redirect to="/trips" />
         }
       />
     );

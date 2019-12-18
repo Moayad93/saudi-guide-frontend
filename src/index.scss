@@ -4,15 +4,7 @@ $cantaloupe: #F4AB93;
 $green: #76DDB0;
 $grey: #F5F7FA;
 $lavender: #A6AED5;
-
-// .borderxxx {
-//   border-color: $green !important;
-//   outline-color: $green !important;
-// }
-
-// .btnxxxxx {
-//   background-color: rgb(255, 0, 200) !important;
-// }
+$yellow: #e3dc7d;
 
 .btn, .btn:hover, .btn:active, .btn:focus {
   color: #ffffff !important;
@@ -67,7 +59,8 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background: transparent url(https://www.123freevectors.com/wp-content/original/131250-dark-grey-polygon-background.jpg) no-repeat center center fixed;
+  // background: transparent url(https://www.123freevectors.com/wp-content/original/131250-dark-grey-polygon-background.jpg) no-repeat center center fixed;
+  background: transparent url(https://images.unsplash.com/photo-1529177926897-1d894ca01471?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -83,7 +76,7 @@ body {
 }
 
 .transparent-div{
-  background-color: rgba($color: rgb(250, 252, 255), $alpha: 0.9);
+  background-color: rgba($color: rgb(250, 252, 255), $alpha: 0.625);
 }
 // .bg-dark {
 //   background-color: #e07979 !important;
