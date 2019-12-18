@@ -9,15 +9,16 @@ class TripForm extends Component {
       trip: {
         title: "",
         description: "",
+        image:"",
         activities: [],
         includedInTrip: [{
           name: "this",
           image: "hey"
         }],
         whatToBring: [{
-          name: "this",
-          image: "hey"
-        }],
+            name: "this",
+            image: "hey"
+          }],
         startDate: "",
         endDate: "",
         recommendation: "",
@@ -53,11 +54,11 @@ class TripForm extends Component {
     console.log("I am in updateTripMethod");
     updateTrip(this.props.match.params.id, data)
       .then(res => {
-        this.props.history.push(`/show-trip/${this.props.match.params.id}`);
         console.log("=======");
         console.log("res", res);
         console.log("=======");
-        this.setState({ ...this.state, trip: res.data });
+        this.setState({ ...this.state, trip: res.data })
+        this.props.history.push(`/show-trip/${this.props.match.params.id}`);
       })
       .catch(err => {
         console.log(err);
@@ -65,26 +66,32 @@ class TripForm extends Component {
   };
 
   componentDidMount() {
+    
     if (this.props.match.params.id) {
       showTrip(this.props.match.params.id)
-        .then((res) => {
-          // let x = new Date()
-          // console.log("(___________________res\n", res);
-          // console.log("(___________________res.data\n", res.data);
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getDay());
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getMonth());
-          // console.log("(___________________res.data.trip.date\n", new Date(res.data.trip.startDate).getFullYear());
-          this.setState({ ...this.state, trip: res.data.trip })
+      .then((res) => {
+        this.setState({ ...this.state, trip: res.data.trip })
+        // let startDateUpdated = this.state.trip.startDate.split(this.state.trip.startDate.charAt(10))[0];
+        // console.log(startDateUpdated);
+        
+        // let endDate = this.state.trip.endDate.split(this.state.trip.endDate.charAt(10))[0];
+        //   const state = this.state.trip.startDate
+        //   state[this.state.trip.startDate]= startDateUpdated
+        //   this.setState({
+        //     trip: state
+        //   });
+          console.log(this.state);
+          
         }).catch((err) => {
           console.log(err);
         });
     }
-    // console.log(this.state);
 
     console.log("=========");
     console.log(this.state.trip.guide);
     console.log("=========");
-    
+
+
   }
 
   handleChange = e => {
@@ -118,7 +125,6 @@ class TripForm extends Component {
     //          vv.trip.whatToBring = cc;
     //          this.setState({trip: vv})
     //          console.log(this.state);
-             
     //         }
     //         else {
     //           // this.state.trip.whatToBring.slice(e.target.name.indexOf(e.target.value), 1)
@@ -157,7 +163,6 @@ class TripForm extends Component {
           //  newArr.push(e.target.value)
           //  newTrip[e.target.name] = newArr
           //  this.setState({trip: newTrip})
-           
             
           //  console.log("-------");
             // e.target.name.push(e.target.value)
@@ -198,8 +203,8 @@ class TripForm extends Component {
   }
 
   render() {
-    console.log(this.state);
-    
+    console.log(this.state.trip.startDate);
+
     return (
       <React.Fragment>
         <form className="needs-validation" novalidate>
@@ -227,6 +232,20 @@ class TripForm extends Component {
                 id="validationCustom02"
                 placeholder="Description"
                 value={this.state.trip.description}
+                onChange={this.handleChange}
+                required
+              />
+              <div className="valid-feedback">Looks good!</div>
+            </div>
+            <div className="col-md-4 mb-3">
+              <label for="validationCustom02">image</label>
+              <input
+                type="text"
+                name="image"
+                className="form-control"
+                id="validationCustom02"
+                placeholder="image"
+                value={this.state.trip.image}
                 onChange={this.handleChange}
                 required
               />
@@ -334,7 +353,7 @@ class TripForm extends Component {
                 id="validationCustom03"
                 placeholder="City"
                 name="city"
-                value={this.state.city}
+                value={this.state.trip.city}
                 onChange={this.handleChange}
                 required
               />
@@ -388,20 +407,6 @@ class TripForm extends Component {
                 Please provide a valid End Date.
               </div>
             </div>
-          </div>
-          <div className="col-md-3 mb-3">
-            <label for="validationCustom05">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              id="validationCustom05"
-              placeholder="address"
-              name="address"
-              value={this.state.address}
-              onChange={this.handleChange}
-              required
-            />
-            <div className="invalid-feedback">Please provide a valid address.</div>
           </div>
           <button className="btn btn-primary" type="submit" onClick={this.onSubmitUpdateMethod}>
             update form

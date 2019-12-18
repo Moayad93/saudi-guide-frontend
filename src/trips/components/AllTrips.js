@@ -27,6 +27,7 @@ class AllTrips extends Component {
             id={trip._id}
             title={trip.title}
             description={trip.description}
+            image={trip.image}
             startDate={trip.startDate}
             endDate={trip.endDate}
             guide={trip.guide}
