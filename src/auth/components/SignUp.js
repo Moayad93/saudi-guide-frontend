@@ -69,7 +69,7 @@ class SignUp extends Component {
     return (
       <React.Fragment>
         <form
-          className="w-50 mx-auto card px-5"
+          className="w-50 mx-auto card px-5 my-5"
           onSubmit={this.onSignUp}
           >
           <div className="form-row">
@@ -132,32 +132,6 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </section>
-            {/* </div> */}
-
-            {/* <Form.Group as={Row}>
-            <Form.Label as="legend" column sm={2}>
-              Role
-            </Form.Label>
-            <Col sm={10}>
-              <Form.Check
-                type="radio"
-                label="Tourist"
-                value="Tourist"
-                name="formHorizontalRadios"
-                id="tourist"
-                onChange={this.handleChange}
-              />
-              <Form.Check
-                type="radio"
-                label="Agent"
-                value="Agent"
-                name="formHorizontalRadios"
-                id="agent"
-                onChange={this.handleChange}
-              />
-            </Col>
-          </Form.Group> */}
-
             <section className="col mt-5 text-right">
               <div className="form-check form-check-inline">
                 <input
