@@ -4,7 +4,7 @@ export const Contact = () => {
   return (
     <div className="contact">
       <React.Fragment>
-        <h1>Build By :</h1>
+        <h2>Build By :</h2><br></br>
         <div className="us">
           <div className="one">
             <h3>Fahad </h3>

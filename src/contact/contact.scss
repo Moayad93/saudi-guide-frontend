@@ -3,10 +3,11 @@
 }
 .us{
     display: inline-flex;
-    background-color: #e07979;
+    background-color: #4d4d4d;
     border-radius: 5px;
     height: 200px;
     margin-bottom: 50px;
+    color: #e07373;
 
 }
 .one{
@@ -16,6 +17,9 @@
 }
 a{
     text-decoration: none;
-    color: #444444;
+    color: #000;
     margin: 0 3px;
+}
+a:hover{
+    color: #e07373;
 }
