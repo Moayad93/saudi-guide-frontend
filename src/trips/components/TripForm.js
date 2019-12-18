@@ -90,8 +90,6 @@ class TripForm extends Component {
     console.log("=========");
     console.log(this.state.trip.guide);
     console.log("=========");
-
-
   }
 
   handleChange = e => {
