@@ -42,7 +42,7 @@ class TripForm extends Component {
       .then(res => {
         this.props.history.push("/trips");
         // this.setState({ ...this.state, trip: res.data })
-        this.props.setTrips([...this.props.trips, data]);
+        this.props.setTrips([...this.props.trip, data]);
       })
       .catch(err => {
         console.log(err);
@@ -196,8 +196,18 @@ class TripForm extends Component {
 
   onSubmitCreateMethod = e => {
     e.preventDefault();
-
-    this.createTripMethod(this.state.trip);
+    if (
+      new Date(this.state.trip.startDate).getFullYear() <=
+        new Date(this.state.trip.endDate).getFullYear() &&
+      new Date(this.state.trip.startDate).getMonth() <=
+        new Date(this.state.trip.endDate).getMonth() &&
+      new Date(this.state.trip.startDate).getDay() <=
+        new Date(this.state.trip.endDate).getDay()
+    ) {
+      this.createTripMethod(this.state.trip);
+    } else {
+      alert("(End Date) is Invalid");
+    }
   };
 
   render() {
