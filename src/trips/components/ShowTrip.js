@@ -72,6 +72,7 @@ class ShowTrip extends Component {
             <React.Fragment>
                 <h1> title : {this.state.trip.title} </h1>
                 <h2> Description: {this.state.trip.description}</h2>
+                <h2> city: {this.state.trip.city}</h2>
                 <h4>start Date: {this.state.trip.startDate}</h4>
                 <h4>end Date: {this.state.trip.endDate}</h4>
                 <img src={this.state.trip.image} alt="ffff" />
