@@ -17,17 +17,15 @@ const Trip = props => {
   console.log("=========");
   return (
     <React.Fragment>
-      <center>
-        <h1>Trip Info</h1>
-      </center>
+      <h1 className="text-center display-4">Trip Info</h1>
       <div className="card w-50 mx-auto">
         <Link
           to={`/show-trip/${props.id}`}
           render={() => (
             <ShowTrip
-              // id={props.id}
-              // trips={props.trips}
-              // setTrips={props.setTrips}
+            // id={props.id}
+            // trips={props.trips}
+            // setTrips={props.setTrips}
             />
           )}
           className="text-decoration-none remove-link-decoration"
@@ -46,16 +44,22 @@ const Trip = props => {
             <p className="card-text">{props.recommendation}</p>
             {!props.user ? (
               <React.Fragment>
-                <DeleteTrip
-                  id={props.id}
-                  trips={props.trips}
-                  setTrips={props.setTrips}
-                />
-                <UpdateTrip
-                  id={props.id}
-                  trips={props.trips}
-                  setTrips={props.setTrips}
-                />
+                <div className="form-row">
+                  <section className="col text-right">
+                    <DeleteTrip
+                      id={props.id}
+                      trips={props.trips}
+                      setTrips={props.setTrips}
+                    />
+                  </section>
+                  <section className="col">
+                    <UpdateTrip
+                      id={props.id}
+                      trips={props.trips}
+                      setTrips={props.setTrips}
+                    />
+                  </section>
+                </div>
               </React.Fragment>
             ) : null}
           </div>
