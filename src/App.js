@@ -6,13 +6,13 @@ import AuthenticatedRoute from "./auth/components/AuthenticatedRoute";
 
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-
+import About from "./about/About";
 import SignUp from "./auth/components/SignUp";
 import SignIn from "./auth/components/SignIn";
 import SignOut from "./auth/components/SignOut";
 import ChangePassword from "./auth/components/ChangePassword";
 import AlertDismissible from "./auth/components/AlertDismissible";
-
+import Contact from "./contact/Contact"
 import AllTrips from "./trips/components/AllTrips";
 import CreateTrip from "./trips/components/CreateTrip";
 import ShowTrip from "./trips/components/ShowTrip";
@@ -77,6 +77,20 @@ console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", user);
               path="/sign-in"
               render={() => (
                 <SignIn alert={this.alert} setUser={this.setUser} />
+              )}
+            />
+            <Route
+              exact
+              path="/about"
+              render={() => (
+                <About />
+              )}
+            />
+            <Route
+              exact
+              path="/contact"
+              render={() => (
+                <Contact />
               )}
             />
             <Route

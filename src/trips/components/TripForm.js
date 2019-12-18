@@ -24,7 +24,7 @@ class TripForm extends Component {
         recommendation: "",
         guide: "5df2104cbdf294053906899b", // add your user id in this feild. this is my user
         city: "",
-        address: "",
+        address: ""
       }
     };
   }
@@ -36,10 +36,10 @@ class TripForm extends Component {
     console.log("==========");
 
     createTrip(data)
-      .then((res) => {
-        this.props.history.push("/trips")
+      .then(res => {
+        this.props.history.push("/trips");
         // this.setState({ ...this.state, trip: res.data })
-        this.props.setTrips([...this.props.trips, data]);
+        this.props.setTrips([...this.props.trip, data]);
       })
       .catch(err => {
         console.log(err);
@@ -90,8 +90,6 @@ class TripForm extends Component {
     console.log("=========");
     console.log(this.state.trip.guide);
     console.log("=========");
-
-
   }
 
   handleChange = e => {
@@ -118,7 +116,6 @@ class TripForm extends Component {
     this.setState({
       trip: newTrip
     });
-
     console.log("setState: ", this.state.trip);
     console.log(this.state.trip);
   };
@@ -134,9 +131,19 @@ class TripForm extends Component {
 
   onSubmitCreateMethod = e => {
     e.preventDefault();
-
-    this.createTripMethod(this.state.trip)
-  }
+    if (
+      new Date(this.state.trip.startDate).getFullYear() <=
+        new Date(this.state.trip.endDate).getFullYear() &&
+      new Date(this.state.trip.startDate).getMonth() <=
+        new Date(this.state.trip.endDate).getMonth() &&
+      new Date(this.state.trip.startDate).getDay() <=
+        new Date(this.state.trip.endDate).getDay()
+    ) {
+      this.createTripMethod(this.state.trip);
+    } else {
+      alert("(End Date) is Invalid");
+    }
+  };
 
   render() {
     console.log(this.state.trip)
@@ -295,7 +302,9 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">Please provide a valid city.</div>
+              <div className="invalid-feedback">
+                Please provide a valid city.
+              </div>
             </div>
           </div>
           <div className="form-row">
@@ -316,7 +325,7 @@ class TripForm extends Component {
               </div>
             </div>
             <div className="col-md-3 mb-3">
-              <label for="validationCustom05">start Date</label>
+              <label for="validationCustom05">Start Date</label>
               <input
                 type="Date"
                 className="form-control"
