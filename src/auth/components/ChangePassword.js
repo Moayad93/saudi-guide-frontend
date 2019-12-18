@@ -26,7 +26,7 @@ class ChangePassword extends Component {
 
     changePassword(this.state, user)
       .then(() => alert(messages.changePasswordSuccess, "success"))
-      .then(() => history.push("/"))
+      .then(() => history.push("/trips"))
       .catch(error => {
         console.error(error);
         this.setState({ oldPassword: "", newPassword: "" });
@@ -38,28 +38,42 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state;
 
     return (
-      <form className="auth-form" onSubmit={this.onChangePassword}>
-        <h3>Change Password</h3>
-
-        <label htmlFor="oldpw">Old Password</label>
-        <input
-          required
-          name="oldPassword"
-          value={oldPassword}
-          type="password"
-          placeholder="Old Password"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="newPassword">New Password</label>
-        <input
-          required
-          name="newPassword"
-          value={newPassword}
-          type="password"
-          placeholder="New Password"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Change Password</button>
+      <form
+        className="w-50 mx-auto card px-5 my-5"
+        onSubmit={this.onChangePassword}
+      >
+        <div className="form-row">
+          <section className="col-12 my-5">
+            <h3>Change your password</h3>
+          </section>
+          <section className="col-12">
+            <input
+              className="form-control"
+              required
+              name="oldPassword"
+              value={oldPassword}
+              type="password"
+              placeholder="Old Password"
+              onChange={this.handleChange}
+            />
+          </section>
+          <section className="col-12">
+            <input
+              className="form-control"
+              required
+              name="newPassword"
+              value={newPassword}
+              type="password"
+              placeholder="New Password"
+              onChange={this.handleChange}
+            />
+          </section>
+          <section className="col-12 my-5 text-center">
+            <button className="btn btn-green w-25" type="submit">
+              Change
+            </button>
+          </section>
+        </div>
       </form>
     );
   }

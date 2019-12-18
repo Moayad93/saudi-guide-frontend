@@ -11,7 +11,7 @@ class UpdateTrip extends Component {
           to={`/trip-form/${this.props.id}`}
           // onClick={this.updateTripMethod}
           render={() => <TripForm />}
-          className="btn btn-primary"
+          className="btn btn-blue"
         >
           Edit
         </Link>

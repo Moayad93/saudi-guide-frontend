@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createActivity } from '../api';
 import { Link, withRouter } from 'react-router-dom';
-class CreateForm extends Component {
+class ActivityForm extends Component {
     constructor(props) {
         super(props)
 
@@ -44,14 +44,14 @@ class CreateForm extends Component {
         });
         console.log(this.state.activity);
     };
-    
+
     onSubmitCreateMethod = (e) => {
         e.preventDefault();
         this.createActivityMethod(this.state.activity)
     }
     render() {
         console.log(this.props.match.params.id);
-        
+
         return (
             <React.Fragment>
                 <form>
@@ -66,7 +66,20 @@ class CreateForm extends Component {
                     <div className="form-group">
                         <input type="text" className="form-control" id="description" placeholder="description" onChange={this.handleChange} value={this.state.activity.description} />
                     </div>
-
+                    <div className="col-md-3 mb-3">
+                        <label for="validationCustom05">Address</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="validationCustom05"
+                            placeholder="address"
+                            name="address"
+                            value={this.state.activity.address}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <div className="invalid-feedback">Please provide a valid address.</div>
+                    </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <input type="number" className="form-control" id="price" placeholder="price" onChange={this.handleChange} value={this.state.activity.price} />
@@ -107,4 +120,4 @@ class CreateForm extends Component {
         )
     }
 }
-export default withRouter(CreateForm);
+export default withRouter(ActivityForm);

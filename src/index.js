@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import "./bootswatch/bootstrap.min.css"
+
+import "bootswatch/dist/materia/bootstrap.min.css";
+import "./customize.scss";
 import "./index.scss";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
