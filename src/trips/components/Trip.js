@@ -4,6 +4,7 @@ import DeleteTrip from "./DeleteTrip";
 import UpdateTrip from "./UpdateTrip";
 import ShowTrip from "./ShowTrip";
 import "./Trip.scss";
+import BookTrip from "./BookTrip";
 
 const Trip = props => {
   let activities;
@@ -42,26 +43,33 @@ const Trip = props => {
             <p className="card-text">{props.guide}</p>
             {activities}
             <p className="card-text">{props.recommendation}</p>
-            {!props.user ? (
-              <React.Fragment>
-                <div className="form-row">
-                  <section className="col text-right">
-                    <DeleteTrip
-                      id={props.id}
-                      trips={props.trips}
-                      setTrips={props.setTrips}
-                    />
-                  </section>
-                  <section className="col">
-                    <UpdateTrip
-                      id={props.id}
-                      trips={props.trips}
-                      setTrips={props.setTrips}
-                    />
-                  </section>
-                </div>
-              </React.Fragment>
-            ) : null}
+            {props.user ?
+              props.user.role === "Agent" ? (
+                <React.Fragment>
+                  <div className="form-row">
+                    <section className="col text-right">
+                      <DeleteTrip
+                        id={props.id}
+                        trips={props.trips}
+                        setTrips={props.setTrips}
+                      />
+                    </section>
+                    <section className="col">
+                      <UpdateTrip
+                        id={props.id}
+                        trips={props.trips}
+                        setTrips={props.setTrips}
+                      />
+                    </section>
+                    {props.user.role === "Tourist" ? (
+                      <section className="col">
+                        <BookTrip />
+                      </section>
+                    ) : null}
+                  </div>
+                </React.Fragment>
+              ) : null
+              : null}
           </div>
         </Link>
       </div>
