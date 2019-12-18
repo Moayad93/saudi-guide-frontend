@@ -96,40 +96,90 @@ class TripForm extends Component {
   };
 
   handleCheckBox = e => {
-    // console.log("Target Name: " + e.target.name);
-    // console.log("Target Value: " + e.target.value);
+    console.log("Target Name: " + e.target.name);
+    console.log("llllli Name: " + this.state.trip[e.target.name].length);
+    console.log("Target Value: " + e.target.value);
     let attr = [];
     let value = e.target.checked;
-    // console.log("Target Checked: " + e.target.checked);
+    console.log("Target Checked: " + e.target.checked);
     this.setState({
       [e.target.name]: [...attr, value]
     });
-    if (e.target.name === "whatToBring") {
-      if (e.target.checked) {
-        // e.target.value = [...new Set(this.state.trip.whatToBring)];
-        this.state.trip.whatToBring.push(e.target.value);
-        console.log("What To Bring", this.state.trip.whatToBring);
-      }
-    }
-    if (e.target.name === "includedInTrip") {
-      if (e.target.checked) {
-        // e.target.value = [...new Set(this.state.trip.includedInTrip)];
-        this.state.trip.includedInTrip.push(e.target.value);
-        console.log("Included In Trip", this.state.trip.includedInTrip);
-      }
-    }
-    // for (let i = 0; i <= e.target.name.length; i++) {
-    //   if (e.target.name.indexOf(e.target.value) > -1) {
-    //     if (e.target.checked){
-    //       e.target.name.push(e.target.value)
-    //     }
-    //     else {
-    //       e.target.name.slice(e.target.name.indexOf(e.target.value), 1)
-    //     }
+    // console.log(this.state);
+    
+    // let cc = [...this.state.trip.whatToBring]
+    // if (e.target.name === "whatToBring") {
+    //   if (cc.indexOf(e.target.value) == -1) {
+    //         if (e.target.checked){
+    //           // this.state.trip.whatToBring.push(e.target.value);
+    //          cc.push(e.target.value)
+    //          console.log(this.state.trip.whatToBring);
+    //          let vv = this.state;
+    //          vv.trip.whatToBring = cc;
+    //          this.setState({trip: vv})
+    //          console.log(this.state);
+             
+    //         }
+    //         else {
+    //           // this.state.trip.whatToBring.slice(e.target.name.indexOf(e.target.value), 1)
+    //           cc.slice(cc[cc.indexOf(e.target.value)], 1)
+    //           let vv = this.state;
+    //           vv.trip.whatToBring = cc;
+    //           this.setState({trip: vv})
+    //         }
+
+    //   ///////
+    //   // if (e.target.checked) {
+    //   //   // e.target.value = [...new Set(this.state.trip.whatToBring)];
+    //   //   this.state.trip.whatToBring.push(e.target.value);
+    //     console.log("What To Bring", this.state.trip.whatToBring);
     //   }
     // }
-    // console.log("setState: " + attr + value);
-    // console.log(this.state.trip);
+    // if (e.target.name === "includedInTrip") {
+    //   if (e.target.checked) {
+    //     // e.target.value = [...new Set(this.state.trip.includedInTrip)];
+    //     this.state.trip.includedInTrip.push(e.target.value);
+    //     console.log("Included In Trip", this.state.trip.includedInTrip);
+    //   }
+    // }
+      for (let i = 0; i <= this.state.trip[e.target.name].length; i++) {
+        if (this.state.trip[e.target.name].indexOf(e.target.value) > -1) {
+          // console.log("++++++++");
+          const newTrip = this.state.trip;
+          let newArr = this.state.trip[e.target.name];
+          newArr.slice( newArr.indexOf(e.target.value) , 1)
+          newTrip[e.target.name] = newArr
+          this.setState({trip: newTrip})
+          
+          // if (e.target.checked){
+          //   const newTrip = this.state.trip;
+          //  let newArr = this.state.trip[e.target.name];
+          //  newArr.push(e.target.value)
+          //  newTrip[e.target.name] = newArr
+          //  this.setState({trip: newTrip})
+           
+            
+          //  console.log("-------");
+            // e.target.name.push(e.target.value)
+          // }
+          // else {
+            
+          //   // e.target.name.slice(e.target.name.indexOf(e.target.value), 1)
+          //   console.log("========");
+            
+          // }
+        }else{  
+            // console.log("out ELSE");
+            
+            const newTrip = this.state.trip;
+            let newArr = this.state.trip[e.target.name];
+            newArr.push(e.target.value)
+            newTrip[e.target.name] = newArr
+            this.setState({trip: newTrip})
+        }
+      }
+      console.log("setState: ", this.state.trip);
+      console.log(this.state.trip);
   };
 
   onSubmitUpdateMethod = e => {
@@ -153,6 +203,8 @@ class TripForm extends Component {
 
   // onSubmit={this.onSubmitUpdateMethod}
   render() {
+    console.log(this.state);
+    
     return (
       <React.Fragment>
         <form className="needs-validation" novalidate>
