@@ -33,6 +33,16 @@ const alwaysOptions = (
         Home
       </Link>
     </li>
+    <li>
+    <Link to="/about" className="nav-link">
+      About
+    </Link>
+    </li>
+    <li>
+    <Link to="/contact" className="nav-link">
+      Contact
+    </Link>
+    </li>
   </React.Fragment>
 );
 
