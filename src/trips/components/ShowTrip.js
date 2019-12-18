@@ -12,6 +12,7 @@ class ShowTrip extends Component {
             trip: {
                 title: "",
                 description: "",
+                image:"",
                 activities: [],
                 includedInTrip: [{
 
@@ -73,6 +74,7 @@ class ShowTrip extends Component {
                 <h2> Description: {this.state.trip.description}</h2>
                 <h4>start Date: {this.state.trip.startDate}</h4>
                 <h4>end Date: {this.state.trip.endDate}</h4>
+                <img src={this.state.trip.image} alt="ffff" />
                 <ul>
                     {allActivities}
                 </ul>
