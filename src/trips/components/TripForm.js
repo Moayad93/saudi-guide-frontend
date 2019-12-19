@@ -133,11 +133,11 @@ class TripForm extends Component {
     e.preventDefault();
     if (
       new Date(this.state.trip.startDate).getFullYear() <=
-        new Date(this.state.trip.endDate).getFullYear() &&
+      new Date(this.state.trip.endDate).getFullYear() &&
       new Date(this.state.trip.startDate).getMonth() <=
-        new Date(this.state.trip.endDate).getMonth() &&
+      new Date(this.state.trip.endDate).getMonth() &&
       new Date(this.state.trip.startDate).getDay() <=
-        new Date(this.state.trip.endDate).getDay()
+      new Date(this.state.trip.endDate).getDay()
     ) {
       this.createTripMethod(this.state.trip);
     } else {
@@ -152,10 +152,12 @@ class TripForm extends Component {
     console.log("this is end Date: ", this.state.trip.endDate);
     return (
       <React.Fragment>
-        <form className="needs-validation" novalidate>
+        <form className="w-50 mx-auto card px-5 my-5">
           <div className="form-row">
-            <div className="col-md-4 mb-3">
-              <label for="validationCustom01">Title</label>
+            <section className="col-12 my-5">
+              <h3>Create your trip</h3>
+            </section>
+            <section className="col-6">
               <input
                 name="title"
                 type="text"
@@ -166,10 +168,8 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
-            </div>
-            <div className="col-md-4 mb-3">
-              <label for="validationCustom02">Description</label>
+            </section>
+            <section className="col-6">
               <input
                 type="text"
                 name="description"
@@ -180,23 +180,20 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
-            </div>
-            <div className="col-md-4 mb-3">
-              <label for="validationCustom02">image</label>
+            </section>
+            <section className="col-12">
               <input
                 type="text"
                 name="image"
                 className="form-control"
-                id="validationCustom02"
+                id="image"
                 placeholder="image"
                 value={this.state.trip.image}
                 onChange={this.handleChange}
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
-            </div>
-            <div className="col-md-4 mb-3">
+            </section>
+            <section className="col-12">
               <label for="validationCustomUsername">included In the Trip</label>
               <div className="input-group">
                 <div className="form-check form-check-inline">
@@ -227,71 +224,64 @@ class TripForm extends Component {
                 </div>
 
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="includedInTrip"
-                    value="BbqDinner"
-                    name="includedInTrip"
-                    onChange={this.handleCheckBox}
-                  />
-                  <label class="form-check-label">Bbq dinner</label>
+                  <label class="form-check-label">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="includedInTrip"
+                      value="BbqDinner"
+                      name="includedInTrip"
+                      onChange={this.handleCheckBox}
+                    />
+                    Bbq dinner</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="includedInTrip"
-                    value="yogaSession"
-                    name="includedInTrip"
-                    onChange={this.handleCheckBox}
-                  />
-                  <label class="form-check-label">Yoga Session</label>
-                </div>
-
-                <div className="invalid-feedback">
-                  Please choose a username.
+                  <label class="form-check-label">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="includedInTrip"
+                      value="yogaSession"
+                      name="includedInTrip"
+                      onChange={this.handleCheckBox}
+                    />
+                    Yoga Session</label>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="col-md-4 mb-3">
-            <label for="validationCustomUsername">What To Bring</label>
-            <div className="input-group">
-              <div className="form-check form-check-inline">
-                <label className="form-check-label">
-                  <input
-                    name="whatToBring"
-                    className="form-check-input"
-                    type="checkbox"
-                    id="whatToBring"
-                    onChange={this.handleCheckBox}
-                    value="yogaMat"
-                  />
-                  Yoga Mat
+            </section>
+            <section className="col-12">
+              <label for="validationCustomUsername">What To Bring</label>
+              <div className="input-group">
+                <div className="form-check form-check-inline">
+                  <label className="form-check-label">
+                    <input
+                      name="whatToBring"
+                      className="form-check-input"
+                      type="checkbox"
+                      id="whatToBring"
+                      onChange={this.handleCheckBox}
+                      value="yogaMat"
+                    />
+                    Yoga Mat
                 </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="whatToBring"
-                    value="snacks"
-                    name="whatToBring"
-                    onChange={this.handleCheckBox}
-                  />
-                  Snacks
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="whatToBring"
+                      value="snacks"
+                      name="whatToBring"
+                      onChange={this.handleCheckBox}
+                    />
+                    Snacks
                 </label>
+                </div>
               </div>
+            </section>
 
-              <div className="invalid-feedback">Please choose a username.</div>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="col-md-6 mb-3">
-              <label for="validationCustom03">City</label>
+            <section className="col-6">
               <input
                 type="text"
                 className="form-control"
@@ -302,14 +292,9 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid city.
-              </div>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="col-md-3 mb-3">
-              <label for="validationCustom04">Recommendation</label>
+            </section>
+
+            <div className="col-6">
               <input
                 type="text"
                 className="form-control"
@@ -318,13 +303,12 @@ class TripForm extends Component {
                 name="recommendation"
                 value={this.state.trip.recommendation}
                 onChange={this.handleChange}
-                required
               />
               <div className="invalid-feedback">
                 Please provide a valid state.
               </div>
             </div>
-            <div className="col-md-3 mb-3">
+            <div className="col-6">
               <label for="validationCustom05">Start Date</label>
               <input
                 type="Date"
@@ -335,11 +319,8 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid start Date.
-              </div>
             </div>
-            <div className="col-md-3 mb-3">
+            <div className="col-6">
               <label for="validationCustom05">End Date</label>
               <input
                 type="Date"
@@ -350,22 +331,22 @@ class TripForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please provide a valid End Date.
-              </div>
             </div>
+            <section className="col-12 my-5 text-center">
+              <button className="btn btn-green w-25" type="submit" onClick={this.onSubmitUpdateMethod}>
+                update form
+          </button>
+            </section>
+            <section className="col-12 my-5 text-center">
+              <button
+                className="btn btn-green w-25"
+                type="submit"
+                onClick={this.onSubmitCreateMethod}
+              >
+                Submit form
+          </button>
+            </section>
           </div>
-          <button className="btn btn-primary" type="submit" onClick={this.onSubmitUpdateMethod}>
-            update form
-          </button>
-
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={this.onSubmitCreateMethod}
-          >
-            Submit form
-          </button>
         </form>
       </React.Fragment>
     );
