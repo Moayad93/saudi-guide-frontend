@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { allTrips} from "../api";
+import { allTrips } from "../api";
 import Trip from "./Trip";
 import { Link } from "react-router-dom";
 import TripForm from "./TripForm";
@@ -46,7 +46,12 @@ class AllTrips extends Component {
     }
     return (
       <React.Fragment>
-        <CreateTrip />
+        {this.props.user ?
+          this.props.user.role === "Agent" ? (
+            <CreateTrip />
+          ): null
+          : null
+        }
         {allTrips}
       </React.Fragment>
     )
