@@ -36,7 +36,7 @@ class ShowTrip extends Component {
           trip: res.data.trip
         });
       })
-      .catch(err => {});
+      .catch(err => { });
   };
 
   componentDidMount() {
@@ -75,11 +75,15 @@ class ShowTrip extends Component {
                     ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate.
                   </p>
-                  <DeleteActivity
-              showTripMethod={this.showTripMethod}
-              id={activity._id}
-              setTrips={this.props.setTrips}
-            />
+                  {this.props.user?
+                  this.props.user.role === "Agent" ?
+                    <DeleteActivity
+                      showTripMethod={this.showTripMethod}
+                      id={activity._id}
+                      setTrips={this.props.setTrips}
+                    /> : null
+                    :null
+                  }
                 </article>
               </section>
             </div>
@@ -96,14 +100,18 @@ class ShowTrip extends Component {
     return (
       <React.Fragment>
         <section className="col-12 my-5 text-center">
-
-        <CreateActivity id={this.props.match.params.id} />
+          {this.props.user ?
+            this.props.user.role === "Agent" ?
+              <CreateActivity id={this.props.match.params.id} />
+              : null
+            : null
+          }
         </section>
-        <h1> title : {this.state.trip.title} </h1>
-        <h1> Description: {this.state.trip.description}</h1>
-        <h1> city: {this.state.trip.city}</h1>
-        <h1>Start Date: {this.state.trip.startDate}</h1>
-        <h1>End Date: {this.state.trip.endDate}</h1>
+        <h1>Title : {this.state.trip.title} </h1>
+        <h1>Description: {this.state.trip.description}</h1>
+        <h1>City: {this.state.trip.city}</h1>
+        <h1>Start Date: {new Date(this.state.trip.startDate).getDay()}-{new Date(this.state.trip.startDate).getMonth()}-{new Date(this.state.trip.startDate).getFullYear()}</h1>
+        <h1>End Date: {new Date(this.state.trip.endDate).getDay()}-{new Date(this.state.trip.endDate).getMonth()}-{new Date(this.state.trip.endDate).getFullYear()}</h1>
         {/* <img src={this.state.trip.image} alt="ffff" /> */}
 
         <section className="timeline-container">{allActivities}</section>

@@ -85,7 +85,7 @@ const Header = ({ user }) => (
           </li>
         </ul>
         {user && (
-          <span className="my-2 my-lg-0">Welcome, {user.firstName}</span>
+          <span className="my-2 my-lg-0 text-white">Welcome, {user.firstName}</span>
         )}
       </div>
     </nav>
