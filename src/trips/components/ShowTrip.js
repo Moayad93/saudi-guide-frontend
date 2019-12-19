@@ -12,7 +12,7 @@ class ShowTrip extends Component {
             trip: {
                 title: "",
                 description: "",
-                image:"",
+                image: "",
                 activities: [],
                 includedInTrip: [{
 
@@ -49,19 +49,19 @@ class ShowTrip extends Component {
     render() {
         console.log("=============");
         console.log(this.props.trips);
-        
+
         let allActivities;
         if (this.state.trip.activities.length > 0) {
             allActivities = this.state.trip.activities.map((activity, index) => {
                 return (
                     <div key={index}>
-                    <li >{activity.title}</li>
-                        <DeleteActivity showTripMethod={this.showTripMethod} id={activity._id} setTrips= {this.props.setTrips}/>
+                        <li >{activity.title}</li>
+                        <DeleteActivity showTripMethod={this.showTripMethod} id={activity._id} setTrips={this.props.setTrips} />
                     </div>
                 )
 
             });
-        }else {
+        } else {
             allActivities = <h2> No Activity </h2>
         }
         console.log(this.state.trip);
@@ -79,7 +79,12 @@ class ShowTrip extends Component {
                 <ul>
                     {allActivities}
                 </ul>
-                <CreateActivity id={this.props.match.params.id} />
+                {this.props.user ?
+                    this.props.user.role === "Agent" ? (
+                        <CreateActivity id={this.props.match.params.id} />
+                    ) : null
+                    : null
+                }
             </React.Fragment>
         )
     }
