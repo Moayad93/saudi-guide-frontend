@@ -97,6 +97,7 @@ class SignUp extends Component {
                 type="text"
                 placeholder="Last Name"
                 onChange={this.handleChange}
+                autoComplete="no"
               />
             </section>
             <section className="col-12">
@@ -108,6 +109,7 @@ class SignUp extends Component {
                 type="email"
                 placeholder="Email"
                 onChange={this.handleChange}
+                autoComplete="no"
               />
             </section>
             <section className="col-md-6">
@@ -119,6 +121,7 @@ class SignUp extends Component {
                 type="password"
                 placeholder="Password"
                 onChange={this.handleChange}
+                autoComplete="no"
               />
             </section>
             <section className="col-md-6">
@@ -130,6 +133,7 @@ class SignUp extends Component {
                 type="password"
                 placeholder="Confirm Password"
                 onChange={this.handleChange}
+                autoComplete="no"
               />
             </section>
             <section className="col mt-5 text-right">
@@ -142,6 +146,7 @@ class SignUp extends Component {
                   name="role"
                   id="tourist"
                   onChange={this.handleChange}
+                  autoComplete="no"
                 />
                 <label className="form-check-label text-muted" for="tourist">
                   Tourist
@@ -158,6 +163,7 @@ class SignUp extends Component {
                   name="role"
                   id="agent"
                   onChange={this.handleChange}
+                  autoComplete="no"
                 />
                 <label className="form-check-label text-muted" for="agent">
                   Agent

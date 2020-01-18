@@ -125,6 +125,9 @@ class TripForm extends Component {
 
   onSubmitUpdateMethod = e => {
     e.preventDefault();
+      const data = {
+        trip: this.state.trip
+      };
     if (
       new Date(this.state.trip.startDate).getFullYear() <=
       new Date(this.state.trip.endDate).getFullYear()
@@ -143,9 +146,6 @@ class TripForm extends Component {
     } else {
       alert("(End Date) is Invalid");
     }
-    const data = {
-      trip: this.state.trip
-    };
   };
 
   onSubmitCreateMethod = e => {
@@ -192,6 +192,7 @@ class TripForm extends Component {
                 value={this.state.trip.title}
                 onChange={this.handleChange}
                 required
+                autoComplete="no"
               />
             </section>
             <section className="col-6">
@@ -218,7 +219,7 @@ class TripForm extends Component {
                 required
               />
             </section>
-            <section className="col-12">
+            <section className="col-12 mt-4">
               <label for="validationCustomUsername">included In the Trip</label>
               <div className="input-group">
                 <div className="form-check form-check-inline">
@@ -234,10 +235,10 @@ class TripForm extends Component {
                     Transportation
                   </label>
                 </div>
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label">
+                <div className="form-check form-check-inline">
+                  <label className="form-check-label">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       id="includedInTrip"
                       value="tourGuide"
@@ -248,10 +249,10 @@ class TripForm extends Component {
                   </label>
                 </div>
 
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label">
+                <div className="form-check form-check-inline">
+                  <label className="form-check-label">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       id="includedInTrip"
                       value="BbqDinner"
@@ -260,10 +261,10 @@ class TripForm extends Component {
                     />
                     Bbq dinner</label>
                 </div>
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label">
+                <div className="form-check form-check-inline">
+                  <label className="form-check-label">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       id="includedInTrip"
                       value="yogaSession"
@@ -274,7 +275,7 @@ class TripForm extends Component {
                 </div>
               </div>
             </section>
-            <section className="col-12">
+            <section className="col-12 my-4">
               <label for="validationCustomUsername">What To Bring</label>
               <div className="input-group">
                 <div className="form-check form-check-inline">
@@ -290,10 +291,10 @@ class TripForm extends Component {
                     Yoga Mat
                 </label>
                 </div>
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label">
+                <div className="form-check form-check-inline">
+                  <label className="form-check-label">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       id="whatToBring"
                       value="snacks"
@@ -331,7 +332,7 @@ class TripForm extends Component {
               />
             </div>
             <div className="col-6">
-              <label for="validationCustom05">Start Date</label>
+              <label for="validationCustom05" className="mt-4 mb-0">Start Date</label>
               <input
                 type="Date"
                 className="form-control"
@@ -343,7 +344,7 @@ class TripForm extends Component {
               />
             </div>
             <div className="col-6">
-              <label for="validationCustom05">End Date</label>
+              <label for="validationCustom05" className="mt-4 mb-0">End Date</label>
               <input
                 type="Date"
                 className="form-control"
@@ -354,25 +355,26 @@ class TripForm extends Component {
                 required
               />
             </div>
+            <section className="col-12 my-5 text-center">
+              {this.props.match.params.id ? (
+                <button
+                  className="btn btn-green w-25"
+                  type="submit"
+                  onClick={this.onSubmitUpdateMethod}
+                >
+                  Update
+            </button>
+              ) : (
+                  <button
+                    className="btn btn-green w-25"
+                    type="submit"
+                    onClick={this.onSubmitCreateMethod}
+                  >
+                    Create
+            </button>
+                )}
+            </section>
           </div>
-
-          {this.props.match.params.id ? (
-            <button
-              className="btn btn-green"
-              type="submit"
-              onClick={this.onSubmitUpdateMethod}
-            >
-              Update
-            </button>
-          ) : (
-            <button
-              className="btn btn-green"
-              type="submit"
-              onClick={this.onSubmitCreateMethod}
-            >
-              Create
-            </button>
-          )}
         </form>
       </React.Fragment>
     );

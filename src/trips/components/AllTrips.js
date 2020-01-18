@@ -46,13 +46,17 @@ class AllTrips extends Component {
     }
     return (
       <React.Fragment>
-        {this.props.user ?
-          this.props.user.role === "Agent" ? (
-            <CreateTrip />
-          ): null
-          : null
-        }
-        {allTrips}
+        <section className="col-12 my-5 text-center">
+          {this.props.user ?
+            this.props.user.role === "Agent" ? (
+              <CreateTrip />
+            ) : null
+            : null
+          }</section>
+        <h1 className="display-4 my-2">Trips</h1>
+        <div className="row">
+            {allTrips}
+        </div>
       </React.Fragment>
     )
   }

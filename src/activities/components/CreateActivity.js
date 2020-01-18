@@ -7,7 +7,7 @@ const CreateActivity = (props) => {
             <Link
                 to={`/show-trip/${props.id}/activity-form`}
                 render={() => <ActivityForm />}
-                className="btn btn-green w-25"
+                className="btn btn-green"
             >
                 Create new activity
         </Link>

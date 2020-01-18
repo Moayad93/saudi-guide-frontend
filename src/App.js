@@ -115,7 +115,7 @@ console.log("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", user);
               exact
               path="/show-trip/:id"
               render={() => (
-                <ShowTrip trips={this.state.trips} setTrips={this.setTrips} />
+                <ShowTrip trips={this.state.trips} setTrips={this.setTrips} user={user} />
               )}
             />
             <Route
